@@ -18,6 +18,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { SearchCardComponent } from './search-card/search-card.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { SearchCardComponent } from './search-card/search-card.component';
     FormsModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatExpansionModule
+    MatExpansionModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
