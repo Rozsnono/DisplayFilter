@@ -43,6 +43,10 @@ const nsideSchema = new Schema(
             type: String,
             required: true,
         },
+        price: {
+            type: Number,
+            required: true,
+        },
         others: {
             type: Array,
             default: false,
