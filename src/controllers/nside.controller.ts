@@ -70,7 +70,7 @@ export default class nsideController implements Controller {
     private getById = async (req: Request, res: Response) => {
         try {
             const id = req.params.id;
-            const document = await this.nsideM.findById(id).populate("monitor", "-_id");
+            const document = await this.nsideM.findById(id);
             if (document) {
                 res.send(document);
             } else {
@@ -83,7 +83,7 @@ export default class nsideController implements Controller {
 
     private create = async (req: Request, res: Response) => {
         try {
-            const data = await this.nsideM.find().populate("monitor", "-_id");
+            const data = await this.nsideM.find();
             const body = req.body;
             let newId = 0;
             if(data.length > 0){
@@ -109,7 +109,7 @@ export default class nsideController implements Controller {
             const body = req.body;
             const modificationResult = await this.nsideM.replaceOne({ _id: id }, body, { runValidators: true });
             if (modificationResult.modifiedCount) {
-                const updatedDoc = await this.nsideM.findById(id).populate("monitor", "-_id");
+                const updatedDoc = await this.nsideM.findById(id);
                 res.send(updatedDoc);
             } else {
                 res.status(404).send(`Document with id ${id} not found!`);
