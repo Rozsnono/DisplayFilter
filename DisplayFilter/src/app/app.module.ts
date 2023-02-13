@@ -10,8 +10,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { HomeCardComponent } from './home-card/home-card.component';
 import { SearchComponent } from './search/search.component';
 
-import {MatGridListModule} from '@angular/material/grid-list';
-
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
