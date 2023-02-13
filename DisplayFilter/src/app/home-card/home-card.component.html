@@ -1,0 +1,18 @@
+<div class="mx-auto card border border-secondary rounded col-6 monitorCard">
+    <img class="p-4 card-img-top monitorImage" [src]="image" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="d-flex justify-content-center card-title">{{name}}</h5>
+
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item ">Resolution: {{resolution}}px</li>
+        <li class="list-group-item">Refresh Rate: {{refreshrate}}hz</li>
+        <li class="list-group-item">Response time: {{responsetime}}ms</li>
+        <li class="list-group-item">Display Size: {{displaysize}}"</li>
+
+    </ul>
+    <div class="d-flex justify-content-center card-body">
+        <a href="#" class="btn btn-warning  card-link">Check</a>
+        <a href="#" class="btn btn-danger card-link">Compare</a>
+    </div>
+</div>
