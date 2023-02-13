@@ -26,7 +26,7 @@ import { SearchCardComponent } from './search-card/search-card.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    HomeCardComponent
+    HomeCardComponent,
     SearchComponent,
     SearchCardComponent
   ],
