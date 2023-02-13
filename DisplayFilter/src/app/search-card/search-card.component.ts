@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-search-card',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./search-card.component.scss']
 })
 export class SearchCardComponent {
-
+  @Input() monitor: any = {};
 }

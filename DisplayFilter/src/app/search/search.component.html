@@ -176,7 +176,9 @@
                 
             </mat-paginator> -->
 
-            <app-search-card class="mt-5"></app-search-card>
+
+
+            <app-search-card class="mt-5" *ngFor="let monitor of monitors" [monitor]="monitor"></app-search-card>
         </div>
     </div>
 </div>
