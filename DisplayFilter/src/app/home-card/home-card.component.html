@@ -1,4 +1,4 @@
-<div class="mx-auto card border border-secondary rounded col-6 monitorCard">
+<div class="card border border-secondary rounded m-3 monitorCard">
     <img class="p-4 card-img-top monitorImage" [src]="image" alt="Card image cap">
     <div class="card-body">
         <h5 class="d-flex justify-content-center card-title">{{name}}</h5>
@@ -12,7 +12,7 @@
 
     </ul>
     <div class="d-flex justify-content-center card-body">
-        <a href="#" class="btn btn-warning  card-link">Check</a>
-        <a href="#" class="btn btn-danger card-link">Compare</a>
+        <button class="m-1" mat-raised-button color="success">View</button>
+        <button class="m-1" mat-raised-button color="primary">Compare</button>
     </div>
 </div>

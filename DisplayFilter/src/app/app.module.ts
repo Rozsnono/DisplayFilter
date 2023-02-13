@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { HomeCardComponent } from './home-card/home-card.component';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { HomeCardComponent } from './home-card/home-card.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatButtonModule
 
   ],
   providers: [],
