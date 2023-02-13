@@ -18,6 +18,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { SearchCardComponent } from './search-card/search-card.component';
+import { HttpClientModule } from '@angular/common/http';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MonitorDialogComponent } from './monitor-dialog/monitor-dialog.component';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 @NgModule({
@@ -26,7 +30,8 @@ import { SearchCardComponent } from './search-card/search-card.component';
     HomeComponent,
     HomeCardComponent,
     SearchComponent,
-    SearchCardComponent
+    SearchCardComponent,
+    MonitorDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,10 @@ import { SearchCardComponent } from './search-card/search-card.component';
     FormsModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatExpansionModule
+    MatExpansionModule,
+    HttpClientModule,
+    MatProgressBarModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

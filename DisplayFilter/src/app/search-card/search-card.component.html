@@ -1,20 +1,20 @@
 <div class="cards row w-100 mt-2">
-    <div class="header col-3">
+    <div class="header col-3 clickable" (click)="goTo(monitor._id)">
         <img src="../../assets/acer.jpg" alt="" srcset="" class="img w-100 p-3">
     </div>
 
     <div class="body col-6">
-        <div class="label">Acer Predator XB273KGPbmiipprzx</div>
+        <div class="label clickable" (click)="goTo(monitor._id)">{{monitor.name}}  {{monitor._id}}</div>
         <hr>
         <div class="desc">
             <table class="table">
                 <tr>
-                    <td>Resolution: <span class="fw-bold">3840*2160px</span></td>
-                    <td>Refresh rate: <span  class="fw-bold">144Hz</span></td>
+                    <td>Resolution: <span class="fw-bold">{{monitor.resolution}}</span></td>
+                    <td>Refresh rate: <span  class="fw-bold">{{monitor.refreshrate}}Hz</span></td>
                 </tr>
                 <tr>
-                    <td>Response time: <span  class="fw-bold">1ms</span></td>
-                    <td>Display size: <span  class="fw-bold">27 inch</span></td>
+                    <td>Response time: <span  class="fw-bold">{{monitor.responsetime}}ms</span></td>
+                    <td>Display size: <span  class="fw-bold">{{monitor.displaysize}} inch</span></td>
                 </tr>
                 <tr>
                     <td>Response time: <span  class="fw-bold">1ms</span></td>
@@ -29,7 +29,7 @@
     <div class="body col-3 text-center">
         <span class="price-label">Price by manufacturer:</span>
 
-        <h1 class="price">$ ~1000</h1>
+        <h1 class="price">$ ~{{monitor.price}}</h1>
 
         <hr>
 

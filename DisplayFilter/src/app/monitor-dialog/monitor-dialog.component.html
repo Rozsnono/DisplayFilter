@@ -1,0 +1,20 @@
+<div class="container">
+  <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+  <div class="row  mt-5" *ngIf="!loading">
+    <div class="col-lg-4">
+      <img [src]="data.picture" alt="" srcset="" class="img w-100 p-5 pt-0">
+    </div>
+    <div class="col-lg-8">
+      <div class="header">
+        <span class="label">{{data.name}}</span>
+
+        <hr>
+
+        <span class="price">$~{{data.price}}</span>
+        <!-- <span class="price-label">Price by manufacturer: </span>  -->
+      </div>
+      
+      
+    </div>
+  </div>
+</div>
