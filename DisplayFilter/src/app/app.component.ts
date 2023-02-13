@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'DisplayFilter';
+
+  backendURL = "https://displayfilter.herokuapp.com";
 }
