@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+
+import {Component, Inject, Input} from '@angular/core';
+
 
 @Component({
   selector: 'app-search-card',
@@ -8,11 +10,8 @@ import { Component, Input } from '@angular/core';
 export class SearchCardComponent {
   @Input() monitor: any = {};
 
-  constructor(){
-    
-  }
 
-  ngOnInit(){
-    console.log(this.monitor);
+  goTo(link: Number){
+    window.location.href = window.location.href + "/" + link;
   }
 }
