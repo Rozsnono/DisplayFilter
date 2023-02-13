@@ -7,4 +7,12 @@ import { Component, Input } from '@angular/core';
 })
 export class SearchCardComponent {
   @Input() monitor: any = {};
+
+  constructor(){
+    
+  }
+
+  ngOnInit(){
+    console.log(this.monitor);
+  }
 }
