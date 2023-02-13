@@ -31,7 +31,7 @@ export default class App {
     
 
     public listen(): void {
-        const port = 25565;
+        const port = process.env.PORT || 25565;
         this.app.listen(port, () => {
             console.log(`App listening on the port `, port);
         });
