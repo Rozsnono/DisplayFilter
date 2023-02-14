@@ -14,4 +14,12 @@ export class SearchCardComponent {
   goTo(link: Number){
     window.location.href = window.location.href + "/" + link;
   }
+
+  add() {
+    let compare : any = localStorage.getItem("compare");
+    compare = parseInt(compare);
+    compare++;
+    localStorage.setItem('compare', compare);
+  }
 }
+
