@@ -41,10 +41,10 @@ export default class nsideController implements Controller {
     private getPic = async (req: Request, res: Response) => {
         try {
 
-            const apikey = "1e2e9cb1c380fee95e865ddd652950507b62350d30bd1f38bfa3fcd64838003e";
-
+            
             const body = req.body;
-
+            
+            const apikey = body.api;
             const SerpApi = require("google-search-results-nodejs");
             const search = new SerpApi.GoogleSearch(apikey); //your API key from serpapi.com
 
