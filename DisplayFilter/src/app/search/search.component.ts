@@ -47,34 +47,60 @@ export class SearchComponent {
       this.addToDatabase(p1);
       console.log(time);
       p1++;
-    }, 850);
+    }, 1000);
+  }
+
+  Timer2(p1: any = 0) {
+    let time = setInterval(() => {
+      this.deleteAll(p1);
+      p1++;
+    }, 1000);
   }
 
 
-  async addToDatabase(e: any) {
+  addToDatabase(e: any) {
     let element: any = this.newmonitors[e];
 
-
-
-    let tmpOBJ = {
-      name: element.Manufacturer + element.Model,
-      productname: element.Model,
-      picture: "https://p1.akcdn.net/mid/618434731.acer-predator-xb273kgpbmiipprzx-um-hx3ee-p13.jpg",
-      resolution: element.Resolution,
-      description: element.Type,
-      displaysize: element.Size1,
-      responsetime: "1 ms",
-      refreshrate: element.refresh,
-      type: element.types,
-      price: 1000,
-      others: []
-    }
-
-
-    this.http.post<any[]>(this.backendURL + "/api/new", tmpOBJ).subscribe(
+    this.http.post<any[]>(this.backendURL + "/api/pic", { search: (element.Manufacturer + " " + element.Model) }).subscribe(
       {
-        next: (data: any) => { },
+        next: (data: any) => {
+
+          let tmpOBJ = {
+            name: element.Manufacturer + " " + element.Model,
+            productname: element.Model,
+            picture: data[0].original,
+            resolution: element.Resolution,
+            description: element.Type,
+            displaysize: element.Size1,
+            responsetime: "1 ms",
+            refreshrate: element.refresh,
+            type: element.types,
+            price: 1000,
+            others: []
+          }
+
+
+          this.http.post<any[]>(this.backendURL + "/api/new", tmpOBJ).subscribe(
+            {
+              next: (data: any) => { console.log("Done!"); },
+              error: error => console.log(error.message)
+            }
+          )
+
+        },
         error: error => console.log(error.message)
+      }
+    )
+
+
+  }
+
+  deleteAll(id: any){
+    this.http.delete<any[]>(this.backendURL + "/api/monitors/"+id).subscribe(
+      {
+        next: (data: any) => {console.log("Deleted ", id)},
+        error: error => console.log(error)
+        
       }
     )
   }
