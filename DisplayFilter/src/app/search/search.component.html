@@ -172,13 +172,13 @@
 
         </div>
         <div class="col-lg-9 container">
-            <mat-paginator [length]="count" [pageSize]="limit" [pageSizeOptions]="[10, 15, 30]" [pageIndex]="offset" (page)="handlePageEvent($event)">
+            <mat-paginator [length]="count" [pageSize]="limit" [pageSizeOptions]="[10, 15, 30]" (page)="handlePageEvent($event)">
                 
             </mat-paginator>
 
             <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
 
-            <app-search-card *ngFor="let monitor of monitors" [monitor]="monitor"></app-search-card>
+            <app-search-card *ngFor="let monitor of cmonitors" [monitor]="monitor"></app-search-card>
         </div>
     </div>
 </div>
@@ -186,3 +186,4 @@
 
 <textarea name="monitors" id="monitor" [(ngModel)]="newmonitors" cols="30" rows="10"></textarea>
 <button class="btn" (click)="AddNewMonitor()">Add</button>
+<img [src]="testPic" alt="">

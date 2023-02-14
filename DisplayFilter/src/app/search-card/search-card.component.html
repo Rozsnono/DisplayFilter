@@ -1,6 +1,6 @@
 <div class="cards row w-100 mt-2">
     <div class="header col-3 clickable" (click)="goTo(monitor._id)">
-        <img src="../../assets/acer.jpg" alt="" srcset="" class="img w-100 p-3">
+        <img [src]="monitor.picture" alt="" srcset="" class="img w-100 p-3">
     </div>
 
     <div class="body col-6">
@@ -9,12 +9,12 @@
         <div class="desc">
             <table class="table">
                 <tr>
-                    <td>Resolution: <span class="fw-bold">{{monitor.resolution}}</span></td>
-                    <td>Refresh rate: <span  class="fw-bold">{{monitor.refreshrate}}Hz</span></td>
+                    <td>Resolution: <span class="fw-bold">{{monitor.resolution}}px</span></td>
+                    <td>Refresh rate: <span  class="fw-bold">{{monitor.refreshrate}}</span></td>
                 </tr>
                 <tr>
-                    <td>Response time: <span  class="fw-bold">{{monitor.responsetime}}ms</span></td>
-                    <td>Display size: <span  class="fw-bold">{{monitor.displaysize}} inch</span></td>
+                    <td>Response time: <span  class="fw-bold">{{monitor.responsetime}}</span></td>
+                    <td>Display size: <span  class="fw-bold">{{monitor.displaysize}} </span></td>
                 </tr>
                 <tr>
                     <td>Response time: <span  class="fw-bold">1ms</span></td>

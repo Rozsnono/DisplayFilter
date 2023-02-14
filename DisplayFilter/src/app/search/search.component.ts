@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({
@@ -11,15 +11,15 @@ export class SearchComponent {
   panelOpenState = false;
 
 
-  
+
   backendURL = "https://displayfilter.herokuapp.com";
 
-  constructor(private http: HttpClient){
+  constructor(private http: HttpClient) {
     this.getMonitors();
   }
 
-  ngOnInIt(){
-    
+  ngOnInIt() {
+
   }
 
   offset = 0;
@@ -28,48 +28,65 @@ export class SearchComponent {
   loading = true;
 
   monitors = [];
+  cmonitors = [];
+
   count = 0;
 
   newmonitors = "";
 
-  AddNewMonitor(){
-    console.log(JSON.parse(this.newmonitors));
+  testPic = "";
 
-    for (let index = 0; index < JSON.parse(this.newmonitors).length; index++) {
-      const element = JSON.parse(this.newmonitors)[index];
+  AddNewMonitor() {
+    this.newmonitors = JSON.parse(this.newmonitors);
+    this.Timer(0);
 
-      let tmpOBJ = {
-        name: element.monitor,
-        productname: "",
-        picture: element.pics,
-        resolution: element.resol,
-        description: "",
-        displaysize: element.displaysize,
-        responsetime: element.response,
-        refreshrate: element.refreshrate,
-        type: element.panel,
-        price: 1000,
-        others: []
-      }
-
-      this.http.post<any[]>(this.backendURL+"/api/new",tmpOBJ).subscribe(
-        {
-          next: (data: any) => {window.location.reload()},
-          error: error => console.log(error)
-        }
-      )
-      
-    }
-
-    
   }
 
-  getMonitors(){
-    
-    this.http.get<any[]>(this.backendURL+"/api/monitors").subscribe(
+  Timer(p1: any) {
+    let time = setInterval(() => {
+      this.addToDatabase(p1);
+      console.log(time);
+      p1++;
+    }, 850);
+  }
+
+
+  async addToDatabase(e: any) {
+    let element: any = this.newmonitors[e];
+
+
+
+    let tmpOBJ = {
+      name: element.Manufacturer + element.Model,
+      productname: element.Model,
+      picture: "https://p1.akcdn.net/mid/618434731.acer-predator-xb273kgpbmiipprzx-um-hx3ee-p13.jpg",
+      resolution: element.Resolution,
+      description: element.Type,
+      displaysize: element.Size1,
+      responsetime: "1 ms",
+      refreshrate: element.refresh,
+      type: element.types,
+      price: 1000,
+      others: []
+    }
+
+
+    this.http.post<any[]>(this.backendURL + "/api/new", tmpOBJ).subscribe(
+      {
+        next: (data: any) => { },
+        error: error => console.log(error.message)
+      }
+    )
+  }
+
+  getMonitors() {
+
+    this.http.get<any[]>(this.backendURL + "/api/monitors").subscribe(
       {
         next: (data: any) => {
           this.monitors = data;
+          this.cmonitors = this.monitors.slice(this.offset, this.offset + this.limit);
+
           this.count = this.monitors.length;
           this.loading = false;
         },
@@ -78,8 +95,14 @@ export class SearchComponent {
     )
   }
 
-  handlePageEvent(event: any){
+  handlePageEvent(event: any) {
     this.getMonitors();
+    this.limit = event.pageSize;
+    console.log(event);
+
+    this.offset = event.pageIndex * this.limit;
+
+
   }
 
 
