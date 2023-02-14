@@ -47,14 +47,14 @@ export class SearchComponent {
       this.addToDatabase(p1);
       console.log(time);
       p1++;
-    }, 1000);
+    }, 2000);
   }
 
   Timer2(p1: any = 0) {
     let time = setInterval(() => {
       this.deleteAll(p1);
       p1++;
-    }, 1000);
+    }, 2000);
   }
 
 
