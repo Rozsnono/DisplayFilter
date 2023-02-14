@@ -28,15 +28,15 @@ const nsideSchema = new Schema(
             required: true,
         },
         displaysize: {
-            type: Number,
+            type: String,
             required: true,
         },
         refreshrate: {
-            type: Number,
+            type: String,
             required: true,
         },
         responsetime: {
-            type: Number,
+            type: String,
             required: true,
         },
         type: {
