@@ -54,7 +54,7 @@ export default class nsideController implements Controller {
             q: searchQuery, // what we want to search
             engine: "google", // search engine
             hl: "en", // parameter defines the language to use for the Google search
-            gl: "us", // parameter defines the country to use for the Google search
+            gl: "hu", // parameter defines the country to use for the Google search
             tbm: "isch", // parameter defines the type of search you want to do (isch - Google Images)
             };
 
