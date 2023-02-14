@@ -14,6 +14,7 @@ export default class nsideController implements Controller {
         });
         
         this.router.get("/api/monitors", this.getAll);
+        this.router.post("/api/pic", this.getPic);
         this.router.get("/api/pagination/:offset/:limit/:order/:sort/:keyword?", this.getPag);
         this.router.get("/api/monitor/:id", this.getById);
 
@@ -32,6 +33,51 @@ export default class nsideController implements Controller {
         try {
             const data = await this.nsideM.find();
             res.send(data);
+        } catch (error) {
+            res.status(400).send(error.message);
+        }
+    };
+
+    private getPic = async (req: Request, res: Response) => {
+        try {
+
+            const apikey = "1e2e9cb1c380fee95e865ddd652950507b62350d30bd1f38bfa3fcd64838003e";
+
+            const body = req.body;
+
+            const SerpApi = require("google-search-results-nodejs");
+            const search = new SerpApi.GoogleSearch(apikey); //your API key from serpapi.com
+
+            const searchQuery = body.search;
+
+            const params = {
+            q: searchQuery, // what we want to search
+            engine: "google", // search engine
+            hl: "en", // parameter defines the language to use for the Google search
+            gl: "us", // parameter defines the country to use for the Google search
+            tbm: "isch", // parameter defines the type of search you want to do (isch - Google Images)
+            };
+
+            const getJson = () => {
+            return new Promise((resolve) => {
+                search.json(params, resolve);
+            });
+            };
+
+            const getResults = async () => {
+            const imagesResults = [];
+            while (true) {
+                const json : any = await getJson();
+                if (json.images_results) {
+                imagesResults.push(...json.images_results);
+                break;
+                } else break;
+            }
+            return imagesResults;
+            };
+
+            getResults().then((result) => res.send(result));
+
         } catch (error) {
             res.status(400).send(error.message);
         }
