@@ -30,6 +30,40 @@ export class SearchComponent {
   monitors = [];
   count = 0;
 
+  newmonitors = "";
+
+  AddNewMonitor(){
+    console.log(JSON.parse(this.newmonitors));
+
+    for (let index = 0; index < JSON.parse(this.newmonitors).length; index++) {
+      const element = JSON.parse(this.newmonitors)[index];
+
+      let tmpOBJ = {
+        name: element.monitor,
+        productname: "",
+        picture: element.pics,
+        resolution: element.resol,
+        description: "",
+        displaysize: element.displaysize,
+        responsetime: element.response,
+        refreshrate: element.refreshrate,
+        type: element.panel,
+        price: 1000,
+        others: []
+      }
+
+      this.http.post<any[]>(this.backendURL+"/api/new",tmpOBJ).subscribe(
+        {
+          next: (data: any) => {window.location.reload()},
+          error: error => console.log(error)
+        }
+      )
+      
+    }
+
+    
+  }
+
   getMonitors(){
     
     this.http.get<any[]>(this.backendURL+"/api/monitors").subscribe(
